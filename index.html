@@ -549,8 +549,6 @@
                 padding: 30px;
             }
         }
-
-        /* Улучшения доступности */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -568,13 +566,11 @@
             top: 0;
         }
 
-        /* Увеличение области для истории */
         .history-text {
             max-height: none;
             overflow: visible;
         }
         
-        /* Увеличение галереи */
         .gallery-section {
             min-height: 800px;
         }
@@ -587,7 +583,7 @@
         <div class="container">
             <nav class="nav">
                 <div class="logo">
-                    <!-- Замените src на путь к вашему логотипу -->
+                    
                     <img src="lafclana.png" alt=" " class="logo-img">
                     <h2>Тевтонцы</h2>
                 </div>
@@ -631,7 +627,7 @@
                         </div>
                     </div>
                     <div class="about-image">
-                        <!-- Замените src на путь к вашему изображению -->
+                      
                         <img src="sostav.jpg" alt="Состав на 2025 год">
                     </div>
                 </div>
@@ -643,32 +639,32 @@
                 <h2>Галерея</h2>
                 <div class="gallery">
                     <div class="gallery-item">
-                        <!-- Замените src на путь к вашему изображению -->
+                     
                         <img src="3serv11.jpg" alt="Уверенный топ 1">
                         <div class="caption">Уверенный топ 1 на 3 сервере</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- Замените src на путь к вашему изображению -->
+          
                         <img src="4serv1.jpg" alt="Топ 1 на 4 сервере">
                         <div class="caption">Топ 1 на четвертом сервере.Почти целый регион</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- Замените src на путь к вашему изображению -->
+                       
                         <img src="bossp.jpg" alt="Клановый поход на боссов">
                         <div class="caption">Клановый поход на боссов</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- Замените src на путь к вашему изображению -->
+                        
                         <img src="sbor.jpg" alt="Сбор">
                         <div class="caption">Срочный сбор на масштабную битву</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- Замените src на путь к вашему изображению -->
+                      
                         <img src="topopit.jpg" alt="Топ аккаунт">
                         <div class="caption">Аккаунт в топе по опыту</div>
                     </div>
                     <div class="gallery-item">
-                        <!-- Замените src на путь к вашему изображению -->
+                        
                         <img src="oldsost.jpg" alt="Участники старого состава">
                         <div class="caption">Старый состав клана</div>
                     </div>
@@ -681,7 +677,7 @@
                 <h2>Контакты лидера</h2>
                 <div class="contacts">
                     <div class="leader-info">
-                        <!-- Замените src на путь к аватару лидера -->
+    
                         <img src="gunter1.jpg" alt="Лидер клана" class="leader-avatar">
                         <div class="leader-name">Инфантерия</div>
                         <div class="leader-title">Лидер Тевтонцев</div>
@@ -715,7 +711,6 @@
     </footer>
 
     <script>
-        // Плавная прокрутка к якорям
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -729,7 +724,7 @@
             });
         });
 
-        // Изменение шапки при скролле
+       
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -739,7 +734,7 @@
             }
         });
 
-        // Анимация появления элементов при скролле
+    
         const observerOptions = {
             threshold: 0.1
         };
@@ -755,7 +750,6 @@
         document.querySelectorAll('.section').forEach(section => {
             observer.observe(section);
         });
-        // Анимация флага при наведении
         const flag = document.querySelector('.flag');
         flag.addEventListener('mouseenter', function() {
             this.style.animationDuration = '5s';
@@ -763,8 +757,6 @@
         flag.addEventListener('mouseleave', function() {
             this.style.animationDuration = '10s';
         });
-        
-        // Фокус для доступности
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Tab') {
                 document.body.classList.add('keyboard-nav');
