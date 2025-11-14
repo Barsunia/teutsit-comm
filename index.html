@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тевтонцы - Zombix Online history</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --white: #ffffff;
+            --light-gray: #f5f5f5;
+            --bright-yellow: #ffc107;
+            --gold: #ffa000;
+            --dark-yellow: #ff8f00;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --text-dark: #212121;
+            --text-light: #757575;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background-color: var(--white);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--bright-yellow);
+            transition: all 0.5s ease;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .logo-img:hover {
+            transform: rotate(360deg) scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+        }
+
+        .logo h2 {
+            color: var(--text-dark);
+            font-size: 1.8em;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--bright-yellow);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--bright-yellow);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 0 80px;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .flag-container {
+            position: relative;
+            width: 350px;
+            height: 250px;
+            margin: 0 auto 50px;
+            perspective: 1000px;
+            z-index: 2;
+        }
+
+        .flag-pole {position: absolute;
+            left: -25px;
+            top: 0;
+            width: 25px;
+            height: 100%;
+            background: linear-gradient(to right, #5d4037, #795548, #5d4037);
+            border-radius: 10px 0 0 10px;
+            box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .flag {
+            width: 100%;
+            height: 100%;
+            background: var(--bright-yellow);
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform-style: preserve-3d;
+            animation: wave 10s infinite ease-in-out;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flag:before {
+            content: '- Т -';
+            font-size: 120px;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+
+        @keyframes wave {
+            0%, 100% { 
+                transform: rotateY(0deg) rotateX(0deg) skew(0deg, 0deg);
+            }
+            25% { 
+                transform: rotateY(3deg) rotateX(1deg) skew(1deg, 0.5deg);
+            }
+            50% { 
+                transform: rotateY(0deg) rotateX(2deg) skew(-0.5deg, 0.5deg);
+            }
+            75% { 
+                transform: rotateY(-3deg) rotateX(1deg) skew(0.5deg, -0.5deg);
+            }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: var(--bright-yellow);
+            border-radius: 2px;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .btn {
+            background: var(--bright-yellow);
+            color: var(--text-dark);
+            padding: 16px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.4);
+        }
+
+        .section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: var(--text-dark);
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: var(--bright-yellow);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .history-section {
+            background: var(--light-gray);
+            padding: 50px;
+            border-radius: 15px;
+            border-left: 5px solid var(--bright-yellow);
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.5s ease;
+        }
+        .history-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .history-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        .history-text p {
+            margin-bottom: 25px;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px var(--shadow);
+            transition: all 0.5s ease;
+            border: 3px solid var(--bright-yellow);
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-section {
+            padding: 30px 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.5s ease;
+            height: 280px;
+            border: 3px solid transparent;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow);
+            border-color: var(--bright-yellow);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(33, 33, 33, 0.85);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+
+        .contacts {
+            background: var(--light-gray);
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 10px 25px var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            transition: all 0.5s ease;
+            border-top: 5px solid var(--bright-yellow);
+        }
+
+        .contacts:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow);
+        }
+
+        .leader-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .leader-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid var(--bright-yellow);
+            box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+            transition: all 0.5s ease;
+        }
+
+        .leader-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.6);
+        }
+
+        .leader-name {
+            font-size: 2.2em;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .leader-title {
+            font-size: 1.3em;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .contact-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 25px;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: all 0.3s ease;
+            width: 220px;
+            border: 2px solid transparent;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px var(--shadow);
+            border-color: var(--bright-yellow);
+        }
+
+        .contact-icon {
+            font-size: 2.8em;
+            color: var(--text-dark);
+        }
+
+        .contact-detail {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1em;
+        }
+
+        .contact-label {
+            color: var(--text-light);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 50px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            background: var(--bright-yellow);
+            color: var(--text-dark);
+            border-radius: 50%;
+            font-size: 1.5em;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .flag-container {
+                width: 280px;
+                height: 200px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .history-section {
+                padding: 30px;
+            }
+        }
+
+        /* Улучшения доступности */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--bright-yellow);
+            color: var(--text-dark);
+            padding: 8px;
+            z-index: 10000;
+            text-decoration: none;
+            border-radius: 0 0 5px 5px;
+            font-weight: 700;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Увеличение области для истории */
+        .history-text {
+            max-height: none;
+            overflow: visible;
+        }
+        
+        /* Увеличение галереи */
+        .gallery-section {
+            min-height: 800px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Перейти к основному содержанию</a>
+    
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <!-- Замените src на путь к вашему логотипу -->
+                    <img src="lafclana.png" alt=" " class="logo-img">
+                    <h2>Тевтонцы</h2>
+                </div>
+                <div class="nav-links">
+                    <a href="#main">Главная</a>
+                    <a href="#about">История</a>
+                    <a href="#gallery">Галерея</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="main" class="hero">
+            <div class="hero-content">
+                <div class="flag-container">
+                    <div class="flag-pole"></div>
+                    <div class="flag"></div>
+                </div>
+                <h1>Тевтонцы</h1>
+                <p>Мы нуждаемся в вас.Вместе - непобедимы.</p>
+                <a href="#about" class="btn">Узнать нашу историю <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>История</h2>
+                <div class="about-content">
+                    <div class="history-section">
+                        <div class="history-text">
+                            <p>Клан был основан в 2020 году.Однако стоит упомянуть то,что Тевтонцы были ранее и в другой игре под названием Марш Империй.</p>
+                            
+                            <p>Клан начал своё развитие в игре Zombix Online с наборов игроков в клан.Лидер клана,известный как Инфантерия,так скажем разделил состав на два отдела: элита и основной состав.</p>
+                            
+                            <p>По словам Инфантерии,элита Тевтонцев - воины,готовые идти через воду,огонь,грязь,да через что угодно ради победы и процветания клана.</p>
+                            
+                            <p>Клан учавствовал во множестве битв на разных регионах с разными кланами,такие как Eclipse,Comrades,CREEPS,МОНОЛИТ и многие другие.</p>
+                            
+                            <p>Клан существует и по сей день,наводя страх среди рейдеров и других кланов.Клан известен тем,что имеет много полностью прокачанных аккаунтов,а также своими богатствами и силой его участников.</p>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="sostav.jpg" alt="Состав на 2025 год">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section gallery-section">
+            <div class="container">
+                <h2>Галерея</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="3serv11.jpg" alt="Уверенный топ 1">
+                        <div class="caption">Уверенный топ 1 на 3 сервере</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="4serv1.jpg" alt="Топ 1 на 4 сервере">
+                        <div class="caption">Топ 1 на четвертом сервере.Почти целый регион</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="bossp.jpg" alt="Клановый поход на боссов">
+                        <div class="caption">Клановый поход на боссов</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="sbor.jpg" alt="Сбор">
+                        <div class="caption">Срочный сбор на масштабную битву</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="topopit.jpg" alt="Топ аккаунт">
+                        <div class="caption">Аккаунт в топе по опыту</div>
+                    </div>
+                    <div class="gallery-item">
+                        <!-- Замените src на путь к вашему изображению -->
+                        <img src="oldsost.jpg" alt="Участники старого состава">
+                        <div class="caption">Старый состав клана</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacts" class="section">
+            <div class="container">
+                <h2>Контакты лидера</h2>
+                <div class="contacts">
+                    <div class="leader-info">
+                        <!-- Замените src на путь к аватару лидера -->
+                        <img src="gunter1.jpg" alt="Лидер клана" class="leader-avatar">
+                        <div class="leader-name">Инфантерия</div>
+                        <div class="leader-title">Лидер Тевтонцев</div>
+                        <p>Для вступления в клан или сотрудничества свяжитесь с лидером:</p>
+                    </div>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fab fa-telegram contact-icon"></i>
+                            <div class="contact-detail">@per0evoDu</div>
+                            <div class="contact-label">Telegram</div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-gamepad contact-icon"></i>
+                            <div class="contact-detail">- T - Гюнтер</div>
+                            <div class="contact-label">Игровой ник</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Тевтонцы. Все права защищены.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Изменение шапки при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Анимация появления элементов при скролле
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+        // Анимация флага при наведении
+        const flag = document.querySelector('.flag');
+        flag.addEventListener('mouseenter', function() {
+            this.style.animationDuration = '5s';
+        });
+        flag.addEventListener('mouseleave', function() {
+            this.style.animationDuration = '10s';
+        });
+        
+        // Фокус для доступности
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+        
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-nav');
+        });
+    </script>
+</body>
+</html>
